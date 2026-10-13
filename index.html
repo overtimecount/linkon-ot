@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>LINKON OT</title><link rel="manifest" href="manifest.json"><link rel="icon" href="icon.jpg">
+<style>
+:root{--bg:#eef3ff;--card:#ffffffdd;--tx:#0b1d4a;--mut:#6b7a99;--ac:#1f4fd8;--ac2:#00c2ff;--ac3:#8b5cf6;--on:#fff;--b1:#ffb020;--b2:#7c4dff;--b3:#00bfa5;--b4:#ff4081}
+[data-t=redwhite]{--bg:#fff0f1;--tx:#3a0a0a;--mut:#8a6a6a;--ac:#d61f2c;--ac2:#ff8a3d;--ac3:#ff3d81}
+[data-t=redblack]{--bg:#0d0708;--card:#241014dd;--tx:#fff0f0;--mut:#c9a;--ac:#e11d2e;--ac2:#ff7a3d;--ac3:#ff2d78}
+[data-t=greenblack]{--bg:#05110a;--card:#10241adc;--tx:#eafff1;--mut:#8fc9a5;--ac:#10b95a;--ac2:#b6ff3d;--ac3:#00e5c0;--on:#03140a}
+[data-t=blackwhite]{--bg:#f1f1f4;--tx:#111;--mut:#777;--ac:#111;--ac2:#ff9d00;--ac3:#ff2d78}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--tx);padding-bottom:88px;min-height:100vh;overflow-x:hidden}
+body::before,body::after{content:"";position:fixed;width:340px;height:340px;border-radius:50%;filter:blur(70px);opacity:.35;z-index:-1;animation:fl 14s ease-in-out infinite alternate}
+body::before{background:var(--ac2);top:-80px;right:-100px}body::after{background:var(--ac3);bottom:-80px;left:-100px;animation-delay:-6s}
+@keyframes fl{to{transform:translate(-60px,80px) scale(1.25)}}
+#splash{position:fixed;inset:0;z-index:99;background:radial-gradient(circle at 50% 35%,#2a5cff,#12084a 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;transition:opacity .7s,visibility .7s}
+#splash.off{opacity:0;visibility:hidden}
+#splash img{width:130px;height:130px;border-radius:32px;animation:pop 1.2s cubic-bezier(.2,1.4,.4,1),glow 2.4s infinite 1.2s}
+#splash img.bp{border-radius:50%;width:150px;height:150px;object-fit:cover;border:3px solid #ff3b4a;animation:pop 1.2s cubic-bezier(.2,1.4,.4,1),rg 2.4s infinite 1.2s}
+#splash h1{letter-spacing:.5em;margin:26px 0 4px;font-size:34px;animation:rise 1.2s .5s both;background:linear-gradient(90deg,#fff,#7fd8ff,#ff9ad5,#fff);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rise 1.2s .5s both,shine 3s linear infinite}
+#splash p{opacity:.8;margin:0;animation:rise 1.2s .9s both}
+.bar{width:150px;height:5px;border-radius:5px;background:#ffffff33;margin-top:26px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,#ffb020,#ff4081,#7c4dff);animation:ld 2.2s forwards}
+@keyframes pop{from{transform:scale(0) rotate(-200deg)}}@keyframes rise{from{opacity:0;transform:translateY(24px)}}
+@keyframes glow{50%{box-shadow:0 0 50px #5aa0ff}}@keyframes rg{50%{box-shadow:0 0 55px #ff3b4a}}@keyframes ld{from{width:0}to{width:100%}}@keyframes shine{to{background-position:200%}}
+header{position:sticky;top:0;z-index:5;padding:14px 16px;padding-top:calc(14px + env(safe-area-inset-top));background:linear-gradient(110deg,var(--ac),var(--ac3),var(--ac2));background-size:200% 100%;animation:shine 8s linear infinite;color:var(--on);display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:.5px;box-shadow:0 8px 28px #0004;border-radius:0 0 26px 26px}
+header img{width:36px;height:36px;border-radius:11px;box-shadow:0 0 0 2px #fff8}
+main{padding:14px;max-width:640px;margin:auto}
+.card{background:var(--card);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:24px;padding:16px;margin-bottom:14px;box-shadow:0 10px 32px #0002;border:1px solid #ffffff40;animation:in .45s both}
+@keyframes in{from{opacity:0;transform:translateY(14px) scale(.98)}}
+h3{margin:0 0 12px;font-size:18px}
+.hero{background:linear-gradient(135deg,var(--ac),var(--ac3) 55%,var(--ac2));color:#fff;border:0;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:#ffffff26}
+.hero .lbl{opacity:.85;font-size:13px}.hero .big{font-size:38px;font-weight:900;margin:2px 0 12px;text-shadow:0 4px 16px #0004}
+.chips{display:flex;gap:8px;flex-wrap:wrap}.chips span{background:#ffffff2e;border-radius:30px;padding:7px 12px;font-size:13px;font-weight:700;backdrop-filter:blur(6px)}
+nav{position:fixed;bottom:10px;left:10px;right:10px;display:flex;background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:26px;box-shadow:0 10px 36px #0005;padding:6px;z-index:6}
+nav button{flex:1;border:0;background:none;color:var(--mut);padding:8px 0;font-size:11px;font-weight:700;border-radius:20px;transition:.3s}
+nav button b{display:block;font-size:22px;font-weight:400;transition:.3s}
+nav button.on{color:var(--on);background:linear-gradient(120deg,var(--ac),var(--ac3));box-shadow:0 6px 16px #0004}nav button.on b{transform:scale(1.2) translateY(-2px)}
+input,select,textarea{width:100%;padding:13px;border-radius:14px;border:2px solid #8883;background:#8881;color:var(--tx);font-size:16px;margin:4px 0 10px;transition:.2s}
+input:focus,textarea:focus{outline:0;border-color:var(--ac2);box-shadow:0 0 0 4px #00c2ff30}
+label{font-size:13px;color:var(--mut);font-weight:600}
+.btn{border:0;background:linear-gradient(120deg,var(--ac),var(--ac3));color:var(--on);padding:14px 18px;border-radius:16px;font-size:16px;font-weight:800;width:100%;box-shadow:0 8px 20px #0003;transition:.2s}
+.btn.s{width:auto;padding:9px 15px;font-size:14px;border-radius:30px}.btn:active{transform:scale(.96)}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.grid div{aspect-ratio:1;border-radius:14px;background:#8881;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:15px;font-weight:700;position:relative;transition:.2s}
+.grid div:active{transform:scale(.9)}
+.grid .h{aspect-ratio:auto;background:none;font-size:12px;color:var(--mut)}
+.grid .fri{background:linear-gradient(135deg,#ffb02033,#ff408133);color:var(--ac3)}
+.grid small{font-size:10px;font-weight:800}
+.grid .t-d{background:linear-gradient(135deg,#ffb020,#ff7a00);color:#fff;box-shadow:0 6px 14px #ff7a0066}
+.grid .t-n{background:linear-gradient(135deg,#7c4dff,#3d1fd1);color:#fff;box-shadow:0 6px 14px #7c4dff66}
+.grid .t-f6{background:linear-gradient(135deg,#00d9b5,#0097a7);color:#fff;box-shadow:0 6px 14px #00bfa566}
+.grid .t-f18{background:linear-gradient(135deg,#ff4081,#d500f9);color:#fff;box-shadow:0 6px 14px #ff408166}
+.grid .set small{color:#fff}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;margin-top:12px;color:var(--mut);font-weight:600}.legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:4px;vertical-align:-1px}
+.mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.mh b{font-size:18px}
+.row{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px dashed #8883}
+.row .ic{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:19px;flex:none}
+.row span.n{flex:1;font-size:14px}.row b{font-size:16px}
+.tot{font-size:28px;font-weight:900;background:linear-gradient(90deg,var(--ac),var(--ac3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.post img{width:100%;border-radius:16px;margin-top:8px}.who{font-weight:800}
+.sw{display:flex;gap:10px;flex-wrap:wrap}.sw button{padding:11px 15px;border-radius:30px;border:3px solid transparent;color:#fff;font-weight:800;box-shadow:0 6px 14px #0003}
+#pick{position:fixed;inset:0;background:#000a;z-index:20;display:none;align-items:flex-end}
+#pick>div{background:var(--bg);width:100%;padding:20px;border-radius:28px 28px 0 0;animation:in .3s}
+#pick .btn{margin-bottom:10px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important}}
+</style></head><body>
+<div id="splash"><img class="bp" src="builder.jpg"><h1>LINKON</h1><p id="sp">Built by LINKON</p><img src="icon.jpg" style="width:44px;height:44px;border-radius:12px;margin-top:22px;animation:rise 1.2s 1.2s both"><div class="bar"><i></i></div></div>
+<header><img src="icon.jpg"><span id="ttl">LINKON OT</span></header>
+<main id="m"></main>
+<div id="pick"><div id="pk"></div></div>
+<nav id="nv"></nav>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+// ====== PASTE YOUR FIREBASE CONFIG HERE (Firebase console > Project settings > Your apps > Web) ======
+const FB={apiKey:"",authDomain:"",projectId:"linkon-ot",appId:""};
+// =========================================================================================
+const L={en:{ot:"Overtime",pay:"Pay Slip",com:"Community",set:"Settings",basic:"Basic salary",att:"Attitude bonus",atd:"Attendance bonus",nb:"Night bill (per night shift)",rate:"OT rate per hour",save:"Save",ph:"Overtime hours",nh:"Night bills",gross:"Total pay",day:"Day shift (3h)",night:"Night shift (4h)",off:"No OT",f6:"Friday 6 hours",f18:"Friday 18 hours",theme:"Theme",lang:"Language",login:"Log in",reg:"Sign up",out:"Log out",name:"Name",email:"Email",pw:"Password (6+ characters)",post:"Post",say:"Write something…",photo:"Add photo",follow:"Follow",fl:"Following",ofri:"OT Fridays used",share:"Share pay slip",ps:"Pay Slip"},
+bn:{ot:"ওভারটাইম",pay:"পে স্লিপ",com:"কমিউনিটি",set:"সেটিংস",basic:"মূল বেতন",att:"এটিটিউড বোনাস",atd:"হাজিরা বোনাস",nb:"নাইট বিল (প্রতি নাইট শিফট)",rate:"ঘণ্টা প্রতি OT রেট",save:"সেভ",ph:"ওভারটাইম ঘণ্টা",nh:"নাইট বিল",gross:"মোট বেতন",day:"ডে শিফট (৩ ঘণ্টা)",night:"নাইট শিফট (৪ ঘণ্টা)",off:"OT নেই",f6:"শুক্রবার ৬ ঘণ্টা",f18:"শুক্রবার ১৮ ঘণ্টা",theme:"থিম",lang:"ভাষা",login:"লগইন",reg:"সাইন আপ",out:"লগআউট",name:"নাম",email:"ইমেইল",pw:"পাসওয়ার্ড (৬+ অক্ষর)",post:"পোস্ট",say:"কিছু লিখুন…",photo:"ছবি দিন",follow:"ফলো",fl:"ফলোইং",ofri:"OT শুক্রবার",share:"পে স্লিপ শেয়ার",ps:"পে স্লিপ"}};
+const TH={bluewhite:["linear-gradient(120deg,#1f4fd8,#00c2ff)","Blue & White"],redwhite:["linear-gradient(120deg,#d61f2c,#ff8a3d)","Red & White"],redblack:["linear-gradient(120deg,#1a0508,#e11d2e)","Red & Black"],greenblack:["linear-gradient(120deg,#05110a,#10b95a)","Green & Black"],blackwhite:["linear-gradient(120deg,#111,#888)","Black & White"]};
+const $=s=>document.querySelector(s),ls=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}},sv=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+let S=ls('s',{lang:'en',theme:'bluewhite',basic:0,att:0,atd:0,nb:0,rate:0}),D=ls('d',{}),tab='ot',cur=new Date(),user=null,db=null,auth=null;
+const t=k=>L[S.lang][k];
+function apply(){document.documentElement.dataset.t=S.theme;saveS()}function saveS(){sv('s',S)}
+function ym(){return cur.getFullYear()+'-'+String(cur.getMonth()+1).padStart(2,'0')}
+function hoursOf(v){return {d:3,n:4,f6:6,f18:18}[v]||0}
+function rate(){return S.rate>0?S.rate:S.basic/208*2}
+function calc(){const k=ym(),m=D[k]||{};let h=0,n=0;for(const d in m){h+=hoursOf(m[d]);if(m[d]=='n')n++}
+ const ot=h*rate(),nb=n*S.nb;return{h,n,ot,nb,gross:+S.basic+ot+nb+ +S.att+ +S.atd}}
+function render(){
+ $('#nv').innerHTML=[['ot','📅',t('ot')],['pay','🧾',t('pay')],['com','👥',t('com')],['set','⚙️',t('set')]].map(a=>`<button class="${tab==a[0]?'on':''}" onclick="tab='${a[0]}';render()"><b>${a[1]}</b>${a[2]}</button>`).join('');
+ $('#m').innerHTML={ot:vOT,pay:vPay,com:vCom,set:vSet}[tab]();if(tab=='com')loadPosts()}
+function vOT(){const y=cur.getFullYear(),mo=cur.getMonth(),days=new Date(y,mo+1,0).getDate(),first=new Date(y,mo,1).getDay(),m=D[ym()]||{};
+ let g=['S','M','T','W','T','F','S'].map(x=>`<div class="h">${x}</div>`).join('')+'<div style="background:none"></div>'.repeat(first);
+ for(let d=1;d<=days;d++){const w=new Date(y,mo,d).getDay(),v=m[d];g+=`<div class="${w==5?'fri':''} ${v?'set t-'+v:''}" onclick="pickDay(${d})">${d}<small>${v?hoursOf(v)+'h':''}</small></div>`}
+ const c=calc(),fr=Object.values(m).filter(v=>v[0]=='f').length;
+ return `<div class="card hero"><div class="lbl">${t('gross')}</div><div class="big">৳${Math.round(c.gross).toLocaleString()}</div><div class="chips"><span>⏱️ ${c.h}h</span><span>🌙 ${c.n}</span><span>🔥 ${fr} Fri</span></div></div>
+ <div class="card"><div class="mh"><button class="btn s" onclick="mv(-1)">‹</button><b>${cur.toLocaleString(S.lang=='bn'?'bn-BD':'en',{month:'long',year:'numeric'})}</b><button class="btn s" onclick="mv(1)">›</button></div><div class="grid">${g}</div>
+ <div class="legend"><span><i style="background:#ff9100"></i>3h</span><span><i style="background:#7c4dff"></i>4h</span><span><i style="background:#00bfa5"></i>6h</span><span><i style="background:#ff4081"></i>18h</span></div></div>`}
+function mv(n){cur.setMonth(cur.getMonth()+n);render()}
+function pickDay(d){const w=new Date(cur.getFullYear(),cur.getMonth(),d).getDay();
+ const o=w==5?[['f6',t('f6')],['f18',t('f18')]]:[['d',t('day')],['n',t('night')]];
+ $('#pk').innerHTML=`<h3>${cur.getDate?'':''}${d}</h3>`+o.map(a=>`<button class="btn" onclick="setDay(${d},'${a[0]}')">${a[1]}</button>`).join('')+`<button class="btn" style="background:#8886" onclick="setDay(${d},'')">${t('off')}</button>`;$('#pick').style.display='flex'}
+$('#pick').onclick=e=>{if(e.target.id=='pick')e.target.style.display='none'};
+function setDay(d,v){const k=ym();D[k]=D[k]||{};v?D[k][d]=v:delete D[k][d];sv('d',D);$('#pick').style.display='none';render()}
+function vPay(){const c=calc(),r=n=>'৳'+Math.round(n).toLocaleString();
+ const R=(ic,col,n,v)=>`<div class="row"><div class="ic" style="background:${col}22">${ic}</div><span class="n">${n}</span><b>${v}</b></div>`;
+ return `<div class="card hero"><div class="lbl">${t('ps')} • ${ym()}</div><div class="big">${r(c.gross)}</div><div class="chips"><span>⏱️ ${c.h}h</span><span>🌙 ${c.n}</span></div></div>
+ <div class="card">${R('💼','#1f4fd8',t('basic'),r(S.basic))}${R('⏱️','#ff9100',t('ot')+' ('+c.h+'h × '+rate().toFixed(2)+')',r(c.ot))}${R('🌙','#7c4dff',t('nb')+' ('+c.n+')',r(c.nb))}${R('🎯','#ff4081',t('att'),r(S.att))}${R('✅','#00bfa5',t('atd'),r(S.atd))}
+ <div class="row" style="border:0"><span class="n"><b>${t('gross')}</b></span><span class="tot">${r(c.gross)}</span></div><p style="color:var(--mut);font-size:12px;text-align:center">Made with LINKON</p><button class="btn" onclick="shareSlip()">📤 ${t('share')}</button></div>`}
+function shareSlip(){const c=calc(),x=`LINKON OT — ${ym()}\n${t('basic')}: ${S.basic}\nOT ${c.h}h: ${Math.round(c.ot)}\n${t('nb')}: ${c.nb}\n${t('att')}: ${S.att}\n${t('atd')}: ${S.atd}\n${t('gross')}: ${Math.round(c.gross)}\nMade with LINKON`;navigator.share?navigator.share({text:x}):prompt('Copy',x)}
+function vSet(){return `<div class="card"><h3>💰 ${t('pay')}</h3>${[['basic','basic'],['att','att'],['atd','atd'],['nb','nb'],['rate','rate']].map(a=>`<label>${t(a[1])}${a[0]=='rate'?' (0 = auto: basic ÷ 208 × 2)':''}</label><input type="number" inputmode="decimal" value="${S[a[0]]||''}" onchange="S['${a[0]}']=+this.value;saveS()">`).join('')}</div>
+ <div class="card"><h3>🎨 ${t('theme')}</h3><div class="sw">${Object.entries(TH).map(([k,v])=>`<button style="background:${v[0]};${S.theme==k?'border-color:#fff;transform:scale(1.06)':''}" onclick="S.theme='${k}';apply();render()">${v[1]}</button>`).join('')}</div></div>
+ <div class="card"><h3>🌐 ${t('lang')}</h3><div class="sw"><button class="btn s" onclick="S.lang='en';saveS();render()">English</button><button class="btn s" onclick="S.lang='bn';saveS();render()">বাংলা</button></div></div>
+ <p style="text-align:center;color:var(--mut)">LINKON OT • Built by LINKON</p>`}
+// ===== Community (Firebase) =====
+function vCom(){if(!FB.apiKey)return `<div class="card"><h3>${t('com')}</h3><p>Firebase config is empty. Paste your keys at the top of index.html (see README steps).</p></div>`;
+ if(!user)return `<div class="card"><h3>${t('reg')} / ${t('login')}</h3><label>${t('name')}</label><input id="nm"><label>${t('email')}</label><input id="em" type="email"><label>${t('pw')}</label><input id="pw" type="password"><button class="btn" onclick="signup()">${t('reg')}</button><br><br><button class="btn" style="background:#8886" onclick="login()">${t('login')}</button></div>`;
+ return `<div class="card"><b>${user.displayName||user.email}</b> <button class="btn s" style="float:right" onclick="auth.signOut()">${t('out')}</button><br><br><textarea id="tx" rows="2" placeholder="${t('say')}"></textarea><input type="file" id="ph" accept="image/*" class="hide"><div style="display:flex;gap:8px"><button class="btn s" onclick="$('#ph').click()">📷 ${t('photo')}</button><button class="btn s" onclick="doPost()">${t('post')}</button></div></div><div id="feed"></div>`}
+function initFB(){if(!FB.apiKey||typeof firebase=='undefined')return;firebase.initializeApp(FB);auth=firebase.auth();db=firebase.firestore();
+ auth.onAuthStateChanged(u=>{user=u;if(u)db.collection('users').doc(u.uid).set({name:u.displayName||u.email,joined:Date.now()},{merge:true});if(tab=='com')render()})}
+function err(e){alert(e.message)}
+function signup(){auth.createUserWithEmailAndPassword($('#em').value,$('#pw').value).then(c=>c.user.updateProfile({displayName:$('#nm').value||'Member'}).then(()=>{db.collection('users').doc(c.user.uid).set({name:$('#nm').value||'Member',joined:Date.now()});user=auth.currentUser;render()})).catch(err)}
+function login(){auth.signInWithEmailAndPassword($('#em').value,$('#pw').value).catch(err)}
+function shrink(f){return new Promise(r=>{const i=new Image();i.onload=()=>{const s=Math.min(1,720/i.width),c=document.createElement('canvas');c.width=i.width*s;c.height=i.height*s;c.getContext('2d').drawImage(i,0,0,c.width,c.height);r(c.toDataURL('image/jpeg',.6))};i.src=URL.createObjectURL(f)})}
+async function doPost(){const tx=$('#tx').value.trim(),f=$('#ph').files[0];if(!tx&&!f)return;const img=f?await shrink(f):'';
+ await db.collection('posts').add({uid:user.uid,name:user.displayName||'Member',text:tx,img,t:Date.now(),likes:[]});$('#tx').value='';$('#ph').value='';loadPosts()}
+let fol=[];
+async function loadPosts(){const el=$('#feed');if(!el||!db)return;
+ const me=await db.collection('users').doc(user.uid).get();fol=(me.data()||{}).following||[];
+ const q=await db.collection('posts').orderBy('t','desc').limit(30).get();
+ el.innerHTML=q.docs.map(d=>{const p=d.data(),lk=(p.likes||[]).includes(user.uid),f=fol.includes(p.uid);
+ return `<div class="card post"><span class="who">${esc(p.name)}</span> ${p.uid!=user.uid?`<button class="btn s" style="float:right" onclick="follow('${p.uid}')">${f?t('fl'):t('follow')}</button>`:''}<div>${esc(p.text)}</div>${p.img?`<img src="${p.img}">`:''}<br><button class="btn s" onclick="like('${d.id}',${lk})">${lk?'❤️':'🤍'} ${(p.likes||[]).length}</button></div>`}).join('')}
+function esc(s){return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+async function like(id,on){const F=firebase.firestore.FieldValue;await db.collection('posts').doc(id).update({likes:on?F.arrayRemove(user.uid):F.arrayUnion(user.uid)});loadPosts()}
+async function follow(uid){const F=firebase.firestore.FieldValue,on=fol.includes(uid);
+ await db.collection('users').doc(user.uid).set({following:on?F.arrayRemove(uid):F.arrayUnion(uid)},{merge:true});
+ await db.collection('users').doc(uid).set({followers:on?F.arrayRemove(user.uid):F.arrayUnion(user.uid)},{merge:true});loadPosts()}
+apply();render();initFB();
+setTimeout(()=>$('#splash').classList.add('off'),2400);
+if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js');
+</script></body></html>
